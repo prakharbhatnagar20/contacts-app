@@ -12,7 +12,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -22,6 +24,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import com.user.contacts.viewmodels.ContactsViewModel
 
@@ -52,6 +55,8 @@ class MainActivity : ComponentActivity() {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = androidx.compose.ui.Alignment.CenterHorizontally
         ) {
+            Text(text = "Contact Sync App", fontSize = 30.sp)
+            Spacer(modifier = Modifier.height(20.dp))
             Button(
                 onClick = { viewModel.addContactsIfToday(contentResolver)
                           Toast.makeText(context, "Numbers are Added",Toast.LENGTH_SHORT).show()},
@@ -59,6 +64,10 @@ class MainActivity : ComponentActivity() {
             ) {
                 Text(text = "Sync Contacts")
             }
+            
+//            Button(onClick = { /*TODO*/ }) {
+//                Text(text = "Delete Contacts")
+//            }
         }
     }
     @Composable
